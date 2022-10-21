@@ -1,0 +1,18 @@
+<% if @article.errors.any? %>
+    <p><%= @article.errors.full_messages %></p>
+<% end %>
+
+<%= form_with scope: :article, url: articles_path do |form| %>
+    
+
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_field :description %>
+    </div>
+
+    <%= form.submit %>
+<% end %>

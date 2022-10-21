@@ -1,0 +1,13 @@
+<h1>Articles with id: <%= @article.id %> </h1>
+
+<p> <%= flash[:notice] %> </p>
+
+<h2> <%= @article.name %> </h2>
+
+<p> <%= @article.description %> </p>
+
+<div>
+    <button> <%= link_to "back", articles_path %> </button>
+    <button> <%= link_to "edit", edit_article_path %> </button>
+    <button> <%= link_to "delete", @article, data: {turbo_method: :delete} %> </button>
+</div>

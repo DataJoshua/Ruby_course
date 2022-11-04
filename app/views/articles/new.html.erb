@@ -1,18 +1,20 @@
+
 <% if @article.errors.any? %>
-    <p><%= @article.errors.full_messages %></p>
+
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+           <li> <%= msg %> </li >
+        <% end %>
+    </ul>
+
 <% end %>
 
-<%= form_with scope: :article, url: articles_path do |form| %>
+<%= form_with model: @article do |form| %>
+    <div> <%= form.label :name %> </div>
+    <div> <%= form.text_field :name %> </div>
+
+    <div> <%= form.label :description %> </div>
+    <div> <%= form.text_field :description %> </div>
     
-
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :description %>
-        <%= form.text_field :description %>
-    </div>
-
     <%= form.submit %>
-<% end %>
+<% end %> 

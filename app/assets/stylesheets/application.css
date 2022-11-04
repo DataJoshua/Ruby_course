@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ *{
+  padding: 0;
+  margin: 0;
+ }
+
  .btn{
     display:inline-block;
     text-align: center;
@@ -49,5 +54,37 @@
    
   .btn-del:hover{
     background: #f85149;
+    text-decoration: underline;
+  }
+
+  .user-container{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: auto;
+    place-content: center;
+    gap: 50px;
+  }
+
+  .user-card{
+    padding: 10px 50px;
+    display: grid;
+    gap: 15px;
+    place-content: center;
+    align-items: center;
+    background-color: #008c8cac;
+    border-radius: 6px;
+    box-shadow: 0px 35px 52px 0px rgba(34, 60, 80, 0.2);
+  }
+
+  .user-btns{
+    display: flex;
+    gap: 5px;
+  }
+
+  .user-btns a {
+    text-decoration: none;
+    color: #111;
+  }
+  .user-btns a:hover {
     text-decoration: underline;
   }

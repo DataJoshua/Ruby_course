@@ -1,0 +1,19 @@
+<h1> profile of  <%= "(Admin) " if @user.admin? %> <%= @user.name %> </h1>
+
+<p><%= @user.email %> </p>
+
+<%=  avatar_for @user %>
+
+<% if logedin? && @user == current_user %>
+    <%= link_to "Edit your profile", edit_user_path(@user) %>
+    <%= link_to "delete your profile", user_path(@user), data: {turbo_method: :delete} %>
+<% end %>
+
+<% @user.articles.each do |article| %>
+    <div>
+        <h1> Article <%= article.id %> </h1>
+        <p> <%= article.name %> </p>
+        <p> <%= article.description %> </p>
+    </div>
+
+<% end %>

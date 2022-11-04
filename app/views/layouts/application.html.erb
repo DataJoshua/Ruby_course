@@ -11,11 +11,12 @@
   </head>
 
   <body>
-    <ul>
-        <li> <%= link_to "home",root_path %> </li>
+    <%= render "layouts/nav" %>
+    <% flash.each do |type, msg| %>
+        <p style=<%= "flash-#{type}" %>> <% type %> </p>
+    <% end %>
 
-        <li> <%= link_to "about", about_path %> </li>
-    </ul>
     <%= yield %>
+    
   </body>
 </html>

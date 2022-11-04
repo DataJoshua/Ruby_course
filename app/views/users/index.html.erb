@@ -1,0 +1,40 @@
+<h1> All users are been displayed here </h1>
+
+<%= link_to "order by name", sort: :name %>
+
+<div class="user-container">
+    <% @users.each do |user|  %>
+        <div class="user-card">
+            <div class="user-title">
+                <%= "(admin)" if user.admin? %>
+                <%= link_to  user.name, user %>
+            </div>
+            <div class="user-image">
+                <%= avatar_for(user) %>
+            </div>
+            <div class="user-data">
+                <p>
+                    This user has <%= pluralize(user.articles.count, "article" ) %>        
+                </p>
+            </div>
+            <div class="user-btns">
+                <div>
+                    <%= link_to "View", user %>
+                </div>
+                <% if logedin? %>
+                    <% if user == current_user %>
+                        <div>
+                            <%= link_to "edit", url_for([:edit, user]) %>
+                        </div>
+                    <% end %>
+                    <% if current_user.admin? %>
+                        <div>
+                            <%= link_to "delete", user_path(user), data: {turbo_method: :delete} %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+    <%= paginate @users %>
+<div>

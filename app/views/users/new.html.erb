@@ -1,0 +1,21 @@
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+        <p> <%= msg %> </p>
+    <% end %>
+<% end %>
+
+<%= form_with model: @user, url: signup_path  do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+    </div>
+    <div>
+        <%= form.label :password %>
+        <%= form.text_field  :password, type: :password %>
+    </div>
+    <div> <%= form.submit %> </div>
+<% end %>
